@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Rutas App',
       initialRoute: "/",
+      theme: ThemeData.light().copyWith(scaffoldBackgroundColor: Colors.white),
       // onGenerateRoute: RouteGenerator.generateRoute,
       onGenerateRoute: Flurorouter.router.generator,
       navigatorKey: locator<NavigationService>().navigatorKey,

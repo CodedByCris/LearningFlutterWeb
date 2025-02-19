@@ -47,6 +47,22 @@ class _TableDesktopMenu extends StatelessWidget {
             onPressed: () =>
                 locator<NavigationService>().navigateTo(routeName: "/ruta123"),
             color: Colors.black,
+          ),
+          SizedBox(width: 10),
+          CustomFlatButton(
+            text: "Stateful 100",
+            // onPressed: () => Navigator.pushNamed(context, "/ruta123"),
+            onPressed: () => locator<NavigationService>()
+                .navigateTo(routeName: "/stateful/100"),
+            color: Colors.black,
+          ),
+          SizedBox(width: 10),
+          CustomFlatButton(
+            text: "Provider 200",
+            // onPressed: () => Navigator.pushNamed(context, "/ruta123"),
+            onPressed: () => locator<NavigationService>()
+                .navigateTo(routeName: "/provider?q=200"),
+            color: Colors.black,
           )
         ],
       ),
@@ -87,6 +103,22 @@ class _MobileDesktopMenu extends StatelessWidget {
             // onPressed: () => Navigator.pushNamed(context, "/ruta123"),
             onPressed: () =>
                 locator<NavigationService>().navigateTo(routeName: "/ruta123"),
+            color: Colors.black,
+          ),
+          SizedBox(width: 10),
+          CustomFlatButton(
+            text: "Stateful 100",
+            // onPressed: () => Navigator.pushNamed(context, "/ruta123"),
+            onPressed: () => locator<NavigationService>()
+                .navigateTo(routeName: "/stateful/100"),
+            color: Colors.black,
+          ),
+          SizedBox(width: 10),
+          CustomFlatButton(
+            text: "Provider 200",
+            // onPressed: () => Navigator.pushNamed(context, "/ruta123"),
+            onPressed: () => locator<NavigationService>()
+                .navigateTo(routeName: "/provider?q=200"),
             color: Colors.black,
           )
         ],
