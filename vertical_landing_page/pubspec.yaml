@@ -7,9 +7,13 @@ environment:
   sdk: ^3.7.0
 
 dependencies:
+  animate_do: ^4.1.1
   fluro: ^2.0.5
   flutter:
     sdk: flutter
+  google_fonts: ^6.2.1
+  provider: ^6.1.2
+  universal_html: ^2.2.4
 
 dev_dependencies:
   flutter_lints: ^5.0.0
