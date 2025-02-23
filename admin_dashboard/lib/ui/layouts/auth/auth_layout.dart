@@ -43,7 +43,7 @@ class _DesktopBody extends StatelessWidget {
       child: Row(
         children: [
           //Twitter background
-          BackgroundTwitter(),
+          Expanded(child: BackgroundTwitter()),
 
           //View container
           Container(
