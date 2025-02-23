@@ -1,11 +1,13 @@
 import 'package:admin_dashboard/providers/auth_provider.dart';
 import 'package:admin_dashboard/providers/login_form_provider.dart';
-import 'package:admin_dashboard/router/router.dart';
-import 'package:admin_dashboard/ui/buttons/custom_outlined_button.dart';
-import 'package:admin_dashboard/ui/buttons/link_text.dart';
-import 'package:admin_dashboard/ui/inputs/custom_inputs.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+
+import 'package:admin_dashboard/router/router.dart';
+
+import 'package:admin_dashboard/ui/inputs/custom_inputs.dart';
+import 'package:admin_dashboard/ui/buttons/custom_outlined_button.dart';
+import 'package:admin_dashboard/ui/buttons/link_text.dart';
 import 'package:provider/provider.dart';
 
 class LoginView extends StatelessWidget {
@@ -13,7 +15,7 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    final authProvider = Provider.of<AuthProvider>(context);
 
     return ChangeNotifierProvider(
       create: (_) => LoginFormProvider(),
@@ -23,6 +25,7 @@ class LoginView extends StatelessWidget {
             context,
             listen: false,
           );
+
           return Container(
             margin: EdgeInsets.only(top: 100),
             padding: EdgeInsets.symmetric(horizontal: 20),
@@ -34,61 +37,62 @@ class LoginView extends StatelessWidget {
                   key: loginFormProvider.formKey,
                   child: Column(
                     children: [
-                      //EMAIL
+                      // Email
                       TextFormField(
                         validator: (value) {
-                          if (EmailValidator.validate(value ?? '')) {
-                            return null; // Válido
-                          } else {
+                          if (!EmailValidator.validate(value ?? ''))
                             return 'Email no válido';
-                          }
+
+                          return null;
                         },
                         onChanged: (value) => loginFormProvider.email = value,
                         style: TextStyle(color: Colors.white),
                         decoration: CustomInputs.loginInputDecoration(
-                          hint: 'Ingrese su email',
+                          hint: 'Ingrese su correo',
                           label: 'Email',
                           icon: Icons.email_outlined,
                         ),
                       ),
+
                       SizedBox(height: 20),
 
-                      //PASSWORD
+                      // Password
                       TextFormField(
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Ingrese su contraseña';
-                          }
-                          if (value.length < 6) {
-                            return 'La contraseña debe ser mayor a 6 caracteres';
-                          }
-                          return null; // Válido
-                        },
                         onChanged:
                             (value) => loginFormProvider.password = value,
+                        validator: (value) {
+                          if (value == null || value.isEmpty)
+                            return 'Ingrese su contraseña';
+                          if (value.length < 6)
+                            return 'La contraseña debe de ser de 6 caracteres';
+
+                          return null; // Válido
+                        },
+                        obscureText: true,
                         style: TextStyle(color: Colors.white),
                         decoration: CustomInputs.loginInputDecoration(
-                          hint: '********',
-                          label: "Contraseña",
-                          icon: Icons.lock_clock_outlined,
+                          hint: '*********',
+                          label: 'Contraseña',
+                          icon: Icons.lock_outline_rounded,
                         ),
                       ),
+
                       SizedBox(height: 20),
                       CustomOutlinedButton(
                         onPressed: () {
                           final isValid = loginFormProvider.validateForm();
-                          if (isValid) {
+                          if (isValid)
                             authProvider.login(
                               loginFormProvider.email,
                               loginFormProvider.password,
                             );
-                          }
                         },
-                        text: "Ingresar",
+                        text: 'Ingresar',
                       ),
+
                       SizedBox(height: 20),
                       LinkText(
-                        text: "Nueva cuenta",
+                        text: 'Nueva cuenta',
                         onPressed: () {
                           Navigator.pushNamed(
                             context,
