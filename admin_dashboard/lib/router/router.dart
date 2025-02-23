@@ -16,9 +16,21 @@ class Flurorouter {
 
   static void configureRoutes() {
     // Auth routes
-    router.define(rootRoute, handler: AdminHandlers.login);
-    router.define(loginRoute, handler: AdminHandlers.login);
-    // router.define(registerRoute, handler: null);
+    router.define(
+      rootRoute,
+      handler: AdminHandlers.login,
+      transitionType: TransitionType.none,
+    );
+    router.define(
+      loginRoute,
+      handler: AdminHandlers.login,
+      transitionType: TransitionType.none,
+    );
+    router.define(
+      registerRoute,
+      handler: AdminHandlers.register,
+      transitionType: TransitionType.none,
+    );
 
     // 404
     router.notFoundHandler = NoPageFoundHandlers.noPageFound;
