@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-class NavBarAvatar extends StatelessWidget {
-  const NavBarAvatar({super.key});
-
+class NavbarAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipOval(
-      child: Image.network(
-        "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
+      child: Container(
+        child: Image.network('https://dl.airtable.com/DH4ROlhgSVG6TpXY0xrI_large_Joel-Monegro-pic-458x458.jpg'),
         width: 30,
         height: 30,
       ),
